@@ -106,6 +106,26 @@ select * from v_waitlist_breakdown;  -- why people were ready to pay
 select email, reason, created_at from waitlist_signups order by created_at desc;
 ```
 
+### Working on the database with an AI agent (optional)
+
+This repo ships a project-scoped Supabase MCP server in
+[`.mcp.json`](.mcp.json), pinned to project `tvedakxiycroojeghdcw`, plus the two
+official Supabase Agent Skills under `.agents/skills/` (symlinked into
+`.claude/skills/`). Together they let Claude Code inspect the schema, run
+migrations and read logs against this project directly.
+
+Anyone cloning the repo still has to authenticate once, from a **regular
+terminal** (not an IDE extension) — the OAuth flow needs a browser and the token
+is stored per-machine, never in the repo:
+
+```bash
+claude          # then run /mcp, select "supabase", choose Authenticate
+```
+
+Until that is done the server shows as unauthenticated and its tools are
+unavailable. Nothing else in the app depends on it — this is a developer
+convenience, not a runtime dependency.
+
 ---
 
 ## 3. Deploy to Vercel
@@ -128,7 +148,7 @@ git push -u origin main
 
    | Name | Value | Environments |
    | --- | --- | --- |
-   | `NEXT_PUBLIC_SUPABASE_URL` | `https://<your-ref>.supabase.co` | Production, Preview, Development |
+   | `NEXT_PUBLIC_SUPABASE_URL` | `https://tvedakxiycroojeghdcw.supabase.co` | Production, Preview, Development |
    | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | your `anon` `public` key | Production, Preview, Development |
    | `SUPABASE_SERVICE_ROLE_KEY` *(optional)* | your `service_role` key | Production, Preview |
    | `NEXT_PUBLIC_UPI_ID` *(optional)* | `stormproof@okhdfcbank` | Production, Preview, Development |
