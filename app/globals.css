@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink-950: #05070d;
+  --color-ink-900: #0a0e18;
+  --color-ink-850: #0e1422;
+  --color-ink-800: #131b2c;
+  --color-ink-700: #1d2740;
+  --color-ink-600: #2b3754;
+  --color-mist-400: #8b9ab8;
+  --color-mist-300: #aab6cd;
+  --color-mist-200: #ccd5e6;
+  --color-storm-400: #38bdf8;
+  --color-storm-500: #0ea5e9;
+  --color-storm-600: #0284c7;
+  --color-amber-glow: #fbbf24;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
+  --animate-rise: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade: fade 0.25s ease-out both;
+  --animate-sheen: sheen 6s linear infinite;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes sheen {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-ink-950);
+  color: var(--color-mist-200);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Storm backdrop: two soft light sources + a faint grid. */
+.storm-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60rem 40rem at 15% -10%, rgba(14, 165, 233, 0.16), transparent 60%),
+    radial-gradient(50rem 36rem at 90% 0%, rgba(99, 102, 241, 0.14), transparent 60%),
+    linear-gradient(180deg, #05070d 0%, #070b14 40%, #05070d 100%);
+}
+
+.storm-bg::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(to right, rgba(139, 154, 184, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 154, 184, 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(70% 55% at 50% 0%, #000 0%, transparent 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, #ffffff 0%, #cfe6ff 40%, #38bdf8 70%, #ffffff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: var(--animate-sheen);
+}
+
+/* Focus ring that works on both the dark page and the light modal. */
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--color-storm-400);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

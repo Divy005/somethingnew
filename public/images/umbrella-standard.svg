@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="A basic local umbrella with a bent rib and an inverted panel">
+  <defs>
+    <linearGradient id="sbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14181f"/>
+      <stop offset="100%" stop-color="#0a0d12"/>
+    </linearGradient>
+    <linearGradient id="scanopy" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5b6472"/>
+      <stop offset="55%" stop-color="#3f4754"/>
+      <stop offset="100%" stop-color="#252b36"/>
+    </linearGradient>
+    <linearGradient id="sshaft" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3f4754"/>
+      <stop offset="50%" stop-color="#8b95a5"/>
+      <stop offset="100%" stop-color="#343b46"/>
+    </linearGradient>
+    <filter id="ssoft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#sbg)"/>
+  <ellipse cx="400" cy="520" rx="165" ry="18" fill="#000" opacity="0.55" filter="url(#ssoft)"/>
+
+  <!-- shaft -->
+  <rect x="394" y="160" width="11" height="350" rx="5" fill="url(#sshaft)"/>
+  <path d="M394 482 v20 a30 30 0 0 1 -60 0" fill="none" stroke="url(#sshaft)" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- symmetric scalloped canopy, one panel flipped inside out -->
+  <path d="M400 152
+           C 268 152, 176 224, 148 300
+           q 44 30 88 0
+           q 44 30 88 0
+           q 44 30 88 0
+           q 44 30 88 0
+           C 624 224, 532 152, 400 152 Z"
+        fill="url(#scanopy)"/>
+
+  <!-- inverted / blown-out panel -->
+  <path d="M560 300 q 46 -66 92 -10 q -24 44 -92 10 Z" fill="#2a313c"/>
+  <path d="M560 300 q 46 -66 92 -10" fill="none" stroke="#9aa4b4" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- rib seams -->
+  <g stroke="#1b2028" stroke-opacity="0.8" stroke-width="2.5" fill="none">
+    <path d="M400 154 C 330 196, 268 250, 236 298"/>
+    <path d="M400 154 C 378 206, 356 254, 340 300"/>
+    <path d="M400 154 C 422 206, 444 254, 460 300"/>
+    <path d="M400 154 C 470 196, 532 250, 564 298"/>
+  </g>
+
+  <!-- bent steel rib poking out -->
+  <path d="M652 290 l46 -26 l-18 44" fill="none" stroke="#9aa4b4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- sharp tips -->
+  <g fill="#6b7484">
+    <circle cx="148" cy="300" r="5"/>
+    <circle cx="236" cy="300" r="4"/>
+    <circle cx="324" cy="300" r="4"/>
+    <circle cx="412" cy="300" r="4"/>
+    <circle cx="500" cy="300" r="4"/>
+  </g>
+
+  <path d="M400 152 l0 -28" stroke="url(#sshaft)" stroke-width="8" stroke-linecap="round"/>
+</svg>
